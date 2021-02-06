@@ -1,14 +1,37 @@
-# Hashtags
-Adds "hashtag to link" ability to Flarum by turning any word that begins with a "#" into a link. When the link is clicked, a search is performed for related posts. This does not track hashtag popularity.
+# Nex
 
-As an added bonus, you may tag a phrase or multiple keywords with spaces, versus posting a traditional "hashtag." But, you will have to use a BBcode which looks like this (uses a "t" for tag):
-`[t]your search phrase[/t]`
+全方位的『超』自由論壇
+> 為壓力大想找人抒發，或者心中有小宇宙想找人分享的你
+>
+> 提供最棒的多元交流平台
 
-## Install
-`composer require zerosonesfun/hashtags`
+![logo](nex.png)
 
-## Update
-`composer update zerosonesfun/hashtags`
+## Hashtags
 
-## Remove
-`composer remove zerosonesfun/hashtags`
+以 [MIT License](LICENSE) 發行程式原始碼
+
+    MIT License
+    
+    Copyright (c) 2021 Star Inc. (https://starinc.xyz)
+    Copyright (c) 2019 Bungalow Bill
+    
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+> (c) 2021 [Star Inc.](https://starinc.xyz).
