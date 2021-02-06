@@ -12,48 +12,53 @@ use Flarum\Frontend\Document;
 use s9e\TextFormatter\Configurator;
 
 return [
-(new Extend\Frontend('forum'))
+    (new Extend\Frontend('forum'))
         ->content(function (Document $document) {
             $document->foot[] = <<<HTML
 <script>
-  flarum.core.compat.extend.extend(flarum.core.compat['components/CommentPost'].prototype, 'config', function(output, isInitialized, context) {
-    if (context.customExtLastContentHtml !== context.contentHtml) {
-    var pspace = document.querySelectorAll('p');
-    for( var i = 0; i < pspace.length; i++ ) {
-    if( pspace[i].hasChildNodes ) {
-    var padLeft = document.createTextNode( " " );
-    var padRight = document.createTextNode( "" );
-    pspace[i].appendChild( padRight );
-    pspace[i].insertBefore( padLeft, pspace[i].firstChild );
-   }
-  }
-    var els = document.getElementsByTagName("p");
-    for(var i = 0, all = els.length; i < all; i++){   
-         els[i].classList.add('Post-paragraph');
-     }
-    var elss = document.getElementsByClassName("PostMention");
-    for(var i = 0, all = elss.length; i < all; i++){   
-         elss[i].parentNode.classList.remove('Post-paragraph');
-     }
-      var siteURL = app.forum.attribute('baseUrl'),
-        entries = this.element.querySelectorAll('.Post-paragraph'),
-        i;
-  
-      if ( entries.length > 0 ) {
-        for (i = 0; i < entries.length; i = i + 1) {
-          if((entries[i].innerHTML.indexOf("]") == -1)       
-          && (entries[i].innerHTML.indexOf("=") == -1)) {
-              entries[i].innerHTML = entries[i].innerHTML.replace(/((?!([\S]))[\S\s])#([-_A-Za-z0-9\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f]+)/gu,' <a href="'+siteURL+'/all?q=$3" class="hashlink" title="Find more posts tagged with $3">#$3</a>');
-          }
-      } 
-    }  
-}
-    context.customExtLastContentHtml = context.contentHtml;
-  });
+flarum.core.compat.extend.extend(
+    flarum.core.compat['components/CommentPost'].prototype,
+    'config', function (output, isInitialized, context) {
+        if (context.customExtLastContentHtml !== context.contentHtml) {
+            var pspace = document.querySelectorAll('p');
+            for (var i = 0; i < pspace.length; i++) {
+                if (pspace[i].hasChildNodes) {
+                    var padLeft = document.createTextNode(" ");
+                    var padRight = document.createTextNode("");
+                    pspace[i].appendChild(padRight);
+                    pspace[i].insertBefore(padLeft, pspace[i].firstChild);
+                }
+            }
+            var els = document.getElementsByTagName("p");
+            for (var i = 0, all = els.length; i < all; i++) {
+                els[i].classList.add('Post-paragraph');
+            }
+            var elss = document.getElementsByClassName("PostMention");
+            for (var i = 0, all = elss.length; i < all; i++) {
+                elss[i].parentNode.classList.remove('Post-paragraph');
+            }
+            var siteURL = app.forum.attribute('baseUrl'),
+                entries = this.element.querySelectorAll('.Post-paragraph');
+
+            if (entries.length > 0) {
+                for (var i = 0; i < entries.length; i = i + 1) {
+                    if ((entries[i].innerHTML.indexOf("]") == -1)
+                        && (entries[i].innerHTML.indexOf("=") == -1)) {
+                        entries[i].innerHTML = entries[i].innerHTML.replace(
+                            /((?!([\S]))[\S\s])#([-_A-Za-z0-9\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f]+)/gu,
+                            ' <a href="' + siteURL + '/all?q=$3" class="hash-link" title="Find more posts tagged with $3">#$3</a>'
+                        );
+                    }
+                }
+            }
+        }
+        context.customExtLastContentHtml = context.contentHtml;
+    }
+);
 </script>
 HTML;
         }),
-        (new Extend\Formatter)
+    (new Extend\Formatter)
         ->configure(function (Configurator $config) {
             $config->BBCodes->addCustom(
                 '[t]{TEXT100}[/t]',
