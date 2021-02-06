@@ -43,7 +43,7 @@ return [
         for (i = 0; i < entries.length; i = i + 1) {
           if((entries[i].innerHTML.indexOf("]") == -1)       
           && (entries[i].innerHTML.indexOf("=") == -1)) {
-              entries[i].innerHTML = entries[i].innerHTML.replace(/((?!([\S]))[\S\s])#(\p{L}[\w\-]+)/gu,' <a href="'+siteURL+'/all?q=$3" class="hashlink" title="Find more posts tagged with $3">#$3</a>');
+              entries[i].innerHTML = entries[i].innerHTML.replace(/((?!([\S]))[\S\s])#([-_A-Za-z0-9\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f]+)/gu,' <a href="'+siteURL+'/all?q=$3" class="hashlink" title="Find more posts tagged with $3">#$3</a>');
           }
       } 
     }  
